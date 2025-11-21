@@ -1,0 +1,11 @@
+# Directories
+__pycache__
+.pytest_cache
+.ruff_cache
+.venv
+
+# Files
+.coverage
+.env
+*.log
+*.pyc
