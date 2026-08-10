@@ -1,7 +1,9 @@
 # https://docs.astral.sh/ruff/configuration/
 line-length = 100
-target-version = "py312"
+target-version = "py313"
+cache-dir = ".cache/ruff"
 
+exclude = [".cache", ".venv", "__pycache__"]
 include = ["src/**/*.py", "tests/**/*.py", "pyproject.toml"]
 
 [format]

@@ -1,5 +1,11 @@
 # directories
-__pycache__
-.pytest_cache
-.ruff_cache
-.venv
+# Dependencies and generated state
+.cache/
+.venv/
+node_modules/
+.serena/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+*.egg-info/

@@ -1,7 +1,3 @@
-[build-system]
-  build-backend = "hatchling.build"
-  requires = ["hatchling"]
-
 [project]
   authors = [{ name = "Paul Razvan Berg" }]
   dependencies = [
@@ -10,19 +6,18 @@
   description = "Add your description here"
   name = "uv-template"
   readme = "README.md"
-  requires-python = ">=3.12"
+  requires-python = ">=3.13"
   version = "0.1.0"
 
-[project.optional-dependencies]
+[dependency-groups]
   dev = [
-    "pyright>=1.1",
-    "pytest>=8.0",
-    "ruff>=0.8",
+    "pyright>=1.1.410,<2",
+    "pytest>=9.1.1,<10",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.15.18,<0.16",
   ]
 
 [tool.pytest.ini_options]
+  cache_dir = ".cache/pytest"
   pythonpath = ["."]
   testpaths = ["tests"]
-
-[tool.uv]
-  package = false

@@ -1,11 +1,18 @@
-# Directories
-__pycache__
-.pytest_cache
-.ruff_cache
-.venv
+# Dependencies
+.venv/
+node_modules/
+
+# Tool state
+.cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+.serena/
+htmlcov/
+*.egg-info/
 
 # Files
 .coverage
 .env
 *.log
-*.pyc
+*.py[cod]

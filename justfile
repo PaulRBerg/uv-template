@@ -5,12 +5,28 @@ set shell := ["bash", "-euo", "pipefail", "-c"]
 set unstable
 
 # ---------------------------------------------------------------------------- #
+#                                 DEPENDENCIES                                 #
+# ---------------------------------------------------------------------------- #
+
+bun := require("bun")
+uv := require("uv")
+
+prettier := "bunx --no-install prettier"
+prettier_cache := ".cache/prettier/.prettier-cache"
+prettier_globs := "\"**/*.{md,json,jsonc,yaml,yml}\""
+
+# ---------------------------------------------------------------------------- #
 #                                   COMMANDS                                   #
 # ---------------------------------------------------------------------------- #
 
-# Install dependencies
+# Show available commands
+default:
+    @just --list
+
+# Install local formatting and Python dependencies
 install:
-    uv sync --all-extras --dev
+    bun install
+    uv sync --all-groups
 
 # ---------------------------------------------------------------------------- #
 #                                    CHECKS                                    #
@@ -37,29 +53,45 @@ alias fw := full-write
 
 # Check Python formatting and linting with ruff
 ruff-check:
-    uv run ruff check .
-    uv run ruff format --check .
+    {{ uv }} run ruff check .
+    {{ uv }} run ruff format --check .
 
 # Auto-fix Python formatting and linting with ruff
 ruff-write:
-    uv run ruff check --fix .
-    uv run ruff format .
+    {{ uv }} run ruff check --fix .
+    {{ uv }} run ruff format .
 
 # Check types with pyright
 pyright-check:
-    uv run pyright
+    {{ uv }} run pyright
 
-# Check Markdown formatting with prettier (readonly)
-prettier-check:
-    prettier --check "**/*.{json,jsonc,md}"
+# Check documentation and configuration formatting
+prettier-check +globs=prettier_globs:
+    {{ prettier }} \
+        --check \
+        --cache \
+        --cache-location {{ prettier_cache }} \
+        --log-level warn \
+        --no-error-on-unmatched-pattern \
+        {{ globs }}
 
-# Auto-fix Markdown formatting with prettier
-prettier-write:
-    prettier --write "**/*.{json,jsonc,md}"
+# Format documentation and configuration
+prettier-write +globs=prettier_globs:
+    {{ prettier }} \
+        --write \
+        --cache \
+        --cache-location {{ prettier_cache }} \
+        --log-level warn \
+        --no-error-on-unmatched-pattern \
+        {{ globs }}
+
+# Run staged-file checks
+pre-commit:
+    sh .husky/pre-commit
 
 # Run tests with pytest
-test:
-    uv run pytest
+test *args:
+    {{ uv }} run pytest {{ args }}
 
 # ---------------------------------------------------------------------------- #
 #                                   UTILITIES                                  #

@@ -1,89 +1,17 @@
-# Context
+# Python/uv Application Template
 
-This is a Python project using uv for dependency management.
+This is a non-package Python 3.13+ application. Keep executable code in `src/` and tests in `tests/`.
 
-## Project Structure
+## Setup and validation
 
-```
-.
-├── .venv/         # Virtual environment (auto-created by uv)
-├── src/           # Source code
-├── tests/         # Test files
-├── justfile       # Development commands
-└── pyproject.toml # Project configuration
-```
+- Run `just install` after cloning to install the locked Bun and uv dependencies and enable the pre-commit hook.
+- Run `just full-check` for formatting, linting, and type checks; use `just full-write` for safe fixes.
+- Run `just test [pytest args]`; use `uv run pytest --cov=src` when coverage is needed.
+- Run `just pre-commit` to invoke the staged-file hook manually.
 
-## Development Workflow
+## Dependencies and generated state
 
-### Setup
-
-```bash
-# Install dependencies
-uv sync
-```
-
-### Running Code
-
-```bash
-# Run the main script
-uv run python src/main.py
-
-# Run any Python command
-uv run python -m <module>
-```
-
-### Testing
-
-```bash
-# Run all tests
-just test
-
-# Run specific test file
-uv run pytest tests/test_main.py
-
-# Run with coverage
-uv run pytest --cov=src
-```
-
-### Code Quality
-
-```bash
-# Full check (all validations)
-just full-check
-
-# Full write (auto-fix everything possible)
-just full-write
-
-# Individual checks
-just ruff-check      # Linting and formatting
-just pyright-check   # Type checking
-just prettier-check  # Markdown formatting
-```
-
-### Adding Dependencies
-
-```bash
-# Runtime dependency
-uv add <package>
-
-# Development dependency
-uv add --dev <package>
-
-# Remove dependency
-uv remove <package>
-```
-
-## Tool Configuration
-
-- **Ruff**: Configured in `ruff.toml`
-- **Pyright**: Configured in `pyrightconfig.json`
-- **Pytest**: Configured in `pyproject.toml` under `[tool.pytest.ini_options]`
-- **Prettier**: Configured in `.prettierrc.yml`
-
-## Guidelines
-
-- Keep functions small and focused
-- Write tests for new features
-- Run `just full-check` before committing
-- Use type hints for all function signatures
-- Follow PEP 8 style (enforced by Ruff)
+- Add runtime dependencies with `uv add <package>` and development-only dependencies with
+  `uv add --group dev <package>`.
+- Keep Ruff, pytest, and Prettier caches below `.cache/`; do not add generated dependency or cache directories to Git.
+- Use the local Bun-pinned Prettier through just recipes rather than a globally installed formatter.

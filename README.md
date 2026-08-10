@@ -2,128 +2,56 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A modern Python project template using uv for fast, reliable dependency management.
+A minimal Python 3.13+ application template using uv, Ruff, Pyright, pytest, Bun-managed Prettier, and just.
 
-## What's Inside
+## Get Started
 
-- [uv](https://github.com/astral-sh/uv) - Fast Python package and project manager
-- [Python 3.12+](https://www.python.org/) - Modern Python with type hints
-- [Ruff](https://github.com/astral-sh/ruff) - Fast Python linter and formatter
-- [pytest](https://pytest.org/) - Testing framework
-- [Pyright](https://github.com/microsoft/pyright) - Static type checker
-- [Prettier](https://prettier.io/) - Markdown formatter
-- [just](https://github.com/casey/just) - Command runner
+1. Create a repository from this template and update the metadata in `pyproject.toml`.
+2. Install the local development toolchain:
 
-## Getting Started
+   ```bash
+   just install
+   ```
 
-### Using as a Template
+3. Run the starter application:
 
-1. Create a new repository from this template on GitHub
-2. Clone your new repository
-3. Update `pyproject.toml` with your project details
-4. Run `uv sync` to install dependencies
+   ```bash
+   uv run python src/main.py
+   ```
 
-### Manual Setup
+`just install` installs the locked Bun and Python dependencies and enables the local pre-commit hook.
+
+## Development
 
 ```bash
-# Clone the repository
-git clone <your-repo-url>
-cd <your-project>
-
-# Install dependencies
-uv sync
-
-# Run the application
-uv run python src/main.py
-```
-
-## Features
-
-### Fast Dependency Management
-
-uv provides 10-100x faster package installation compared to pip, with automatic virtual environment management and
-cross-platform lockfiles.
-
-### Type Safety
-
-Pyright provides static type checking to catch errors before runtime:
-
-```bash
-just pyright-check
-```
-
-### Code Quality
-
-Ruff handles both linting and formatting with extreme speed:
-
-```bash
-just ruff-check  # Check for issues
-just ruff-write  # Auto-fix issues
-```
-
-### Testing
-
-pytest makes writing and running tests simple:
-
-```bash
-just test
-```
-
-## Sensible Defaults
-
-This template includes configuration for:
-
-- `.gitignore` - Common Python artifacts
-- `.prettierrc.yml` - Markdown formatting
-- `.python-version` - Python version pinning
-- `pyproject.toml` - Project metadata and tool configuration
-- `pyrightconfig.json` - Type checking rules
-- `ruff.toml` - Linting and formatting rules
-- `justfile` - Common development commands
-
-## Usage
-
-### Common Commands
-
-```bash
-# Run all checks
+# Check formatting, linting, and types
 just full-check
 
-# Run all checks and auto-fix issues
+# Apply safe formatting and lint fixes
 just full-write
 
-# Run specific checks
-just ruff-check
-just pyright-check
-just prettier-check
+# Run tests, optionally passing pytest arguments
 just test
+just test tests/test_main.py
+uv run pytest --cov=src
 
-# Auto-fix specific issues
-just ruff-write
-just prettier-write
+# Run the staged-file hook manually
+just pre-commit
 ```
 
-### Adding Dependencies
+Tool caches are kept below `.cache/`; generated dependencies and local agent state are ignored.
+
+## Dependencies
 
 ```bash
-# Add a runtime dependency
+# Add an application dependency
 uv add requests
 
-# Add a development dependency
-uv add --dev black
+# Add a development-only dependency
+uv add --group dev pytest-mock
 
 # Remove a dependency
 uv remove requests
-```
-
-### Python Version Management
-
-```bash
-# Install Python versions
-uv python install 3.12
-
-# Pin Python version
-uv python pin 3.12
 ```
 
 ## License

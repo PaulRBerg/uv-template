@@ -1,9 +1,11 @@
 {
   "include": ["src", "tests"],
-  "exclude": [".venv", "**/__pycache__"],
-  "reportUnusedImport": true,
-  "reportUnusedVariable": true,
+  "exclude": [".cache", ".venv", "**/__pycache__"],
+  "venvPath": ".",
+  "venv": ".venv",
+  "reportUnusedImport": "warning",
+  "reportUnusedVariable": "warning",
   "pythonPlatform": "All",
-  "pythonVersion": "3.12",
+  "pythonVersion": "3.13",
   "typeCheckingMode": "basic"
 }

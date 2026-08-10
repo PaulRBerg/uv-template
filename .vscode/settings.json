@@ -4,13 +4,17 @@
   "python.analysis.diagnosticMode": "workspace",
   "python.analysis.typeCheckingMode": "basic",
   "files.exclude": {
+    "**/.cache": true,
+    "**/.serena": true,
+    "**/.venv": true,
     "**/__pycache__": true,
-    "**/.pytest_cache": true,
-    "**/.ruff_cache": true
+    "**/node_modules": true
   },
   "files.watcherExclude": {
+    "**/.cache/**": true,
     "**/.venv/**": true,
-    "**/__pycache__/**": true
+    "**/__pycache__/**": true,
+    "**/node_modules/**": true
   },
   "[json][jsonc][markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
