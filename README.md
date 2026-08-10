@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A minimal Python 3.13+ application template using uv, Ruff, Pyright, pytest, Bun-managed Prettier, and just.
+A minimal Python 3.13+ application template using uv, Ruff, Pyright, pytest, Bun-managed Prettier, taplo, and just.
 
 ## Get Started
 
@@ -19,7 +19,8 @@ A minimal Python 3.13+ application template using uv, Ruff, Pyright, pytest, Bun
    uv run python src/main.py
    ```
 
-`just install` installs the locked Bun and Python dependencies and enables the local pre-commit hook.
+`just install` installs the locked Bun and Python dependencies and enables the local pre-commit hook. Install
+[`taplo`](https://taplo.tamasfe.dev/) separately (e.g. `brew install taplo`) for TOML formatting.
 
 ## Development
 

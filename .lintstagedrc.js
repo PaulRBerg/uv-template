@@ -2,5 +2,6 @@
 export default {
   "**/*.{md,json,jsonc,yaml,yml}":
     "bunx --no-install prettier --write --cache --cache-location .cache/prettier/.prettier-cache --log-level warn",
+  "**/*.toml": "just toml-format-check",
   "*.py": [() => "just ruff-check", () => "just pyright-check", () => "just test"],
 };

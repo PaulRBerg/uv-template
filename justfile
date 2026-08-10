@@ -10,6 +10,7 @@ set unstable
 
 bun := require("bun")
 uv := require("uv")
+taplo := require("taplo")
 
 prettier := "bunx --no-install prettier"
 prettier_cache := ".cache/prettier/.prettier-cache"
@@ -36,6 +37,7 @@ install:
 [group("checks")]
 @full-check:
     just _run-with-status prettier-check
+    just _run-with-status toml-format-check
     just _run-with-status ruff-check
     just _run-with-status pyright-check
     echo ""
@@ -46,6 +48,7 @@ alias fc := full-check
 [group("checks")]
 @full-write:
     just _run-with-status prettier-write
+    just _run-with-status toml-format-write
     just _run-with-status ruff-write
     echo ""
     echo -e '{{ GREEN }}All code fixes applied!{{ NORMAL }}'
@@ -84,6 +87,14 @@ prettier-write +globs=prettier_globs:
         --log-level warn \
         --no-error-on-unmatched-pattern \
         {{ globs }}
+
+# Check TOML formatting
+toml-format-check *files:
+    {{ taplo }} format --check {{ files }}
+
+# Format TOML files in place
+toml-format-write:
+    {{ taplo }} format
 
 # Run staged-file checks
 pre-commit:
