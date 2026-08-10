@@ -2,6 +2,9 @@
 .venv/
 node_modules/
 
+# Keep the uv interpreter pin under version control even when globally ignored.
+!.python-version
+
 # Tool state
 .cache/
 .pytest_cache/
