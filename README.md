@@ -40,7 +40,7 @@ uv run pytest --cov=src
 just pre-commit
 ```
 
-Tool caches are kept below `.cache/`; generated dependencies and local agent state are ignored.
+Ruff, pytest, and Prettier caches are kept below `.cache/`. Dependency directories and tool state are git-ignored.
 
 ## Dependencies
 

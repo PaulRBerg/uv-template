@@ -15,6 +15,8 @@ import application code as `src.<module>`.
 ## Commits
 
 - Stage whole files. The pre-commit hook rejects a commit when a staged file also has unstaged changes.
+- Run `just full-write` before you stage files. The hook runs Ruff and taplo checks but does not apply fixes. If you
+  apply a fix after staging, the file has unstaged changes and the hook rejects the commit.
 - Expect a staged `*.py` file to trigger Ruff, Pyright, and the full test suite in the hook.
 
 ## Dependencies and Generated State
