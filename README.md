@@ -7,20 +7,20 @@ A minimal Python 3.13+ application template using uv, Ruff, Pyright, pytest, Bun
 ## Get Started
 
 1. Create a repository from this template and update the metadata in `pyproject.toml`.
-2. Install the local development toolchain:
+2. Install [`taplo`](https://taplo.tamasfe.dev/) (e.g. `brew install taplo`). Every `just` recipe requires it.
+3. Install the local development toolchain:
 
    ```bash
    just install
    ```
 
-3. Run the starter application:
+4. Run the starter application:
 
    ```bash
    uv run python src/main.py
    ```
 
-`just install` installs the locked Bun and Python dependencies and enables the local pre-commit hook. Install
-[`taplo`](https://taplo.tamasfe.dev/) separately (e.g. `brew install taplo`) for TOML formatting.
+`just install` installs the locked Bun and Python dependencies and enables the local pre-commit hook.
 
 ## Development
 
@@ -54,6 +54,10 @@ uv add --group dev pytest-mock
 # Remove a dependency
 uv remove requests
 ```
+
+## Contributing
+
+See [AGENTS.md](AGENTS.md) for development rules.
 
 ## License
 
