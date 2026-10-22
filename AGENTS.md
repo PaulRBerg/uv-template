@@ -1,6 +1,6 @@
 # Python/uv Application Template
 
-This repository is a non-package Python 3.13+ application. Keep executable code in `src/` and tests in `tests/`. Tests
+This repository is a non-package Python 3.14+ application. Keep executable code in `src/` and tests in `tests/`. Tests
 import application code as `src.<module>`.
 
 ## Setup and Validation

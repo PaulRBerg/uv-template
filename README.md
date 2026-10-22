@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A minimal Python 3.13+ application template using uv, Ruff, Pyright, pytest, Bun-managed Prettier, taplo, and just.
+A minimal Python 3.14+ application template using uv, Ruff, Pyright, pytest, Bun-managed Prettier, taplo, and just.
 
 ## Get Started
 
