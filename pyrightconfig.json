@@ -6,6 +6,6 @@
   "reportUnusedImport": "warning",
   "reportUnusedVariable": "warning",
   "pythonPlatform": "All",
-  "pythonVersion": "3.14",
+  "pythonVersion": "3.15",
   "typeCheckingMode": "basic"
 }
